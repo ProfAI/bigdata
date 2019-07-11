@@ -3,10 +3,10 @@ import requests_oauthlib
 import socket
 import json
 
-CONSUMER_KEY = 'lfO5GLAPS96iYECUsFJsQyVSs'
-CONSUMER_SECRET = 'bRedXmyk5reMJUypE08QoxY0GZL6Tu1JMubJ7LA0RWtL4P3LgI'
-ACCESS_TOKEN = '3293500504-M8uRj62ECrM3cmeKaNK40j7Ap0xxiP2xiTY8gMP'
-ACCESS_SECRET = 'JtDq8YvivMCwq0MUSxlTYiJaTIECJyYJ3icvvnDzrftmj'
+CONSUMER_KEY = 'INSERISCI QUI LA TUA CONSUMER KEY'
+CONSUMER_SECRET = 'INSERISCI QUI LA TUA CONSUMER SECRET'
+ACCESS_TOKEN = 'INSERISCI QUI IL TUO ACCESS TOKEN'
+ACCESS_SECRET = 'INSERISCI QUI IL TUO ACCESS SECRET'
 
 URL = 'https://stream.twitter.com/1.1/statuses/filter.json'
 
@@ -19,8 +19,8 @@ def get_tweets(target):
     response = requests.get(query_url, auth=my_auth, stream=True)
     return response
 
-    
-def send_tweets(response, conn):    
+
+def send_tweets(response, conn):
     for line in response.iter_lines():
         try:
             full_tweet = json.loads(line)
@@ -30,8 +30,8 @@ def send_tweets(response, conn):
             conn.send((tweet_text + '\n').encode())
         except Exception as e:
             print(e)
-            
-     
+
+
 TCP_IP = "localhost"
 TCP_PORT = 9999
 
